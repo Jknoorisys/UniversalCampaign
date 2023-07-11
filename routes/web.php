@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\snapchat\SnapchatController;
+use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,10 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::prefix('snapchat')->group(function () {
+    Route::get('generate-token', [SnapchatController::class, 'generateToken']);
+    Route::get('refresh-token', [SnapchatController::class, 'refreshToken']);
+    Route::get('get-all-organizations', [SnapchatController::class, 'getAllOrganizations']);
+});
+
