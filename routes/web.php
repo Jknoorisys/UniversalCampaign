@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\snapchat\SnapchatController;
+use App\Http\Controllers\facebook\FacebookMarketingController;
 use GuzzleHttp\Client;
 use Illuminate\Support\Facades\Route;
 
@@ -25,3 +26,7 @@ Route::prefix('snapchat')->group(function () {
     Route::get('get-all-organizations', [SnapchatController::class, 'getAllOrganizations']);
 });
 
+Route::prefix('facebook')->group(function () {
+    Route::get('facebook-integration',[FacebookMarketingController::class,'integrateWithAPI']);
+    
+});
