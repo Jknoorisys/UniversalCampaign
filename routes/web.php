@@ -33,5 +33,6 @@ Route::prefix('snapchat')->group(function () {
 
 Route::prefix('facebook')->group(function () {
     Route::get('facebook-integration',[FacebookMarketingController::class,'integrateWithAPI']);
+    Route::get('facebook-authentication',[FacebookMarketingController::class,'generateUserAccessToken']);
     
 });
