@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('snapchat_tokens', function (Blueprint $table) {
             $table->id();
+            $table->text('organization_id');
+            $table->text('adaccount_id');
             $table->longText('access_token');
             $table->longText('refresh_token');
             $table->timestamps();
