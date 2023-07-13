@@ -64,7 +64,7 @@ class SnapchatController extends Controller
         $snapchatTokens->refresh_token = $responseData['refresh_token'];
         $snapchatTokens->save();
 
-        return $responseData;
+        return redirect()->to('snapchat/get-all-adAccounts');
     }
 
     // Get All Organizations

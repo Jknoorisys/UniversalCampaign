@@ -20,6 +20,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('create-campaign', function () {
+    return view('create-campaign');
+});
+
 Route::prefix('snapchat')->group(function () {
     Route::get('generate-token', [SnapchatController::class, 'generateToken']);
     Route::get('refresh-token', [SnapchatController::class, 'refreshToken']);
