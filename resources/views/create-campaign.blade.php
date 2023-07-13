@@ -114,127 +114,71 @@
                             <label class="form-check-label" for="optionsRadios5">VIDEO</label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="google_objective" id="optionsRadios5" value="MULTI_CHANNEL">
+                            <input class="form-check-input" type="radio" name="google_objective" id="optionsRadios6" value="MULTI_CHANNEL">
                             <label class="form-check-label" for="optionsRadios5">MULTI_CHANNEL</label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="google_objective" id="optionsRadios5" value="LOCAL">
+                            <input class="form-check-input" type="radio" name="google_objective" id="optionsRadios7" value="LOCAL">
                             <label class="form-check-label" for="optionsRadios5">LOCAL</label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="google_objective" id="optionsRadios5" value="SMART">
+                            <input class="form-check-input" type="radio" name="google_objective" id="optionsRadios8" value="SMART">
                             <label class="form-check-label" for="optionsRadios5">SMART</label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="google_objective" id="optionsRadios5" value="PERFORMANCE_MAX">
+                            <input class="form-check-input" type="radio" name="google_objective" id="optionsRadios9" value="PERFORMANCE_MAX">
                             <label class="form-check-label" for="optionsRadios5">PERFORMANCE_MAX</label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="google_objective" id="optionsRadios5" value="LOCAL_SERVICES">
+                            <input class="form-check-input" type="radio" name="google_objective" id="optionsRadios10" value="LOCAL_SERVICES">
                             <label class="form-check-label" for="optionsRadios5">LOCAL_SERVICES</label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="google_objective" id="optionsRadios5" value="DISCOVERY">
+                            <input class="form-check-input" type="radio" name="google_objective" id="optionsRadios11" value="DISCOVERY">
                             <label class="form-check-label" for="optionsRadios5">DISCOVERY</label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="google_objective" id="optionsRadios5" value="TRAVEL">
+                            <input class="form-check-input" type="radio" name="google_objective" id="optionsRadios12" value="TRAVEL">
                             <label class="form-check-label" for="optionsRadios5">TRAVEL</label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="google_objective" id="optionsRadios5" value="UNSPECIFIED">
+                            <input class="form-check-input" type="radio" name="google_objective" id="optionsRadios13" value="UNSPECIFIED">
                             <label class="form-check-label" for="optionsRadios5">UNSPECIFIED</label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="google_objective" id="optionsRadios5" value="UNKNOWN">
+                            <input class="form-check-input" type="radio" name="google_objective" id="optionsRadios14" value="UNKNOWN">
                             <label class="form-check-label" for="optionsRadios5">UNKNOWN</label>
                           </div>
                         </div>
                         <div class="col-3">
                           <label class="mb-2">FB/Instagram</label>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios6" value="BRAND_AWARENESS" checked>
-                            <label class="form-check-label" for="optionsRadios6">BRAND AWARENESS</label>
+                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios1" value="AWARENESS" checked>
+                            <label class="form-check-label" for="optionsRadios6">AWARENESS</label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios6" value="APP_INSTALL" checked>
-                            <label class="form-check-label" for="optionsRadios6">APP INSTALL</label>
+                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios2" value="TRAFFIC" checked>
+                            <label class="form-check-label" for="optionsRadios6">TRAFFIC</label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios6" value="CONVERSIONS" checked>
-                            <label class="form-check-label" for="optionsRadios6">CONVERSIONS</label>
+                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios3" value="CONVERSIONS" checked>
+                            <label class="form-check-label" for="optionsRadios6">ENGAMENT</label>
+                          </div>
+                          
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios4" value="LEAD">
+                            <label class="form-check-label" for="optionsRadios8">LEAD</label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios7" value="VIDEO_VIEW">
-                            <label class="form-check-label" for="optionsRadios7">VIDEO VIEW</label>
+                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios5" value="APP_PROMOTION">
+                            <label class="form-check-label" for="optionsRadios8">APP PROMOTION</label>
                           </div>
+                          
+                          
+                          
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios8" value="EVENT_RESPONSES ">
-                            <label class="form-check-label" for="optionsRadios8">EVENT RESPONSES </label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios8" value="LEAD_GENERATION ">
-                            <label class="form-check-label" for="optionsRadios8">LEAD GENERATION </label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios8" value="LINK_CLICKS ">
-                            <label class="form-check-label" for="optionsRadios8">LINK CLICKS</label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios8" value="LOCAL_AWARENESS ">
-                            <label class="form-check-label" for="optionsRadios8">LOCAL AWARENESS </label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios8" value="MESSAGES">
-                            <label class="form-check-label" for="optionsRadios8">MESSAGES</label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios8" value="OFFER_CLAIMS">
-                            <label class="form-check-label" for="optionsRadios8">OFFER CLAIMS</label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios8" value="OUTCOME_APP_PROMOTION">
-                            <label class="form-check-label" for="optionsRadios8">OUTCOME APP PROMOTION</label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios8" value="OUTCOME_AWARENESS ">
-                            <label class="form-check-label" for="optionsRadios8">OUTCOME AWARENESS</label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios8" value="OUTCOME_ENGAGEMENT">
-                            <label class="form-check-label" for="optionsRadios8">OUTCOME ENGAGEMENT</label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios8" value="OUTCOME_LEADS">
-                            <label class="form-check-label" for="optionsRadios8">OUTCOME LEADS</label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios8" value="OUTCOME_SALES">
-                            <label class="form-check-label" for="optionsRadios8">OUTCOME SALES</label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios8" value="OUTCOME_TRAFFIC">
-                            <label class="form-check-label" for="optionsRadios8">OUTCOME TRAFFIC</label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios8" value="PAGE_LIKES">
-                            <label class="form-check-label" for="optionsRadios8">PAGE LIKES</label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios8" value="POST_ENGAGEMENT">
-                            <label class="form-check-label" for="optionsRadios8">POST ENGAGEMENT</label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios8" value="PRODUCT_CATALOG_SALES">
-                            <label class="form-check-label" for="optionsRadios8">PRODUCT CATALOG SALES</label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios8" value="REACH">
-                            <label class="form-check-label" for="optionsRadios8">REACH</label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios8" value="STORE_VISITS">
-                            <label class="form-check-label" for="optionsRadios8">STORE VISITS</label>
+                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios8" value="SALES">
+                            <label class="form-check-label" for="optionsRadios8">SALES</label>
                           </div>
                         </div>
                         <div class="col-3">
