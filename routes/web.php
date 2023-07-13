@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\campaign\CampaignController;
 use App\Http\Controllers\snapchat\SnapchatController;
 use App\Http\Controllers\facebook\FacebookMarketingController;
 use GuzzleHttp\Client;
@@ -23,6 +24,9 @@ Route::get('/', function () {
 Route::get('create-campaign', function () {
     return view('create-campaign');
 });
+
+Route::post('createCampaign', [CampaignController::class, 'createCampaign']);
+
 
 Route::prefix('snapchat')->group(function () {
     Route::get('generate-token', [SnapchatController::class, 'generateToken']);
