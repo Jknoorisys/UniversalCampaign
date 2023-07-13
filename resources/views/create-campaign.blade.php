@@ -350,7 +350,7 @@
           <div style="overflow:auto;" class="mt-2">
             <div style="float:right;">
               <button type="button" class="btn btn-primary btn-sm" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-              <button type="button" class="btn btn-outline-info btn-sm" id="nextBtn" onclick="nextPrev(1)">Next</button>
+              <button type="submit" class="btn btn-outline-info btn-sm" id="nextBtn" onclick="nextPrev(1)">Next</button>
             </div>
           </div>
           <!-- Circles which indicates the steps of the form: -->

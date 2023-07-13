@@ -146,7 +146,6 @@ class SnapchatController extends Controller
 
     // Create Campaigns
     public function createCampaign(Request $request) {
-        // return $request->all();
         $snapchatTokens = SnapchatTokens::first();
         $accessToken = $snapchatTokens ? $snapchatTokens->access_token : '';
         $ad_account_id = $request->ad_account_id;
