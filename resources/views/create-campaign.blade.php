@@ -145,18 +145,17 @@
                         <div class="col-3">
                           <label class="mb-2">FB/Instagram</label>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios1" value="AWARENESS" checked>
+                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios3" value="ENGAMENT" checked>
+                            <label class="form-check-label" for="optionsRadios6">ENGAMENT</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios1" value="AWARENESS">
                             <label class="form-check-label" for="optionsRadios6">AWARENESS</label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios2" value="TRAFFIC" checked>
+                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios2" value="TRAFFIC">
                             <label class="form-check-label" for="optionsRadios6">TRAFFIC</label>
                           </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios3" value="CONVERSIONS" checked>
-                            <label class="form-check-label" for="optionsRadios6">ENGAMENT</label>
-                          </div>
-                          
                           <div class="form-check">
                             <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios4" value="LEAD">
                             <label class="form-check-label" for="optionsRadios8">LEAD</label>
@@ -279,25 +278,20 @@
               </div>
             </div>
           </div>
-          
           <div style="overflow:auto;" class="mt-2">
             <div style="float:right;">
               <button type="button" class="btn btn-primary btn-sm" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
-              <button type="submit" class="btn btn-outline-info btn-sm" id="nextBtn" onclick="nextPrev(1)">Next</button>
+              <button type="button" class="btn btn-outline-info btn-sm" id="nextBtn" onclick="nextPrev(1)">Next</button>
             </div>
           </div>
           <!-- Circles which indicates the steps of the form: -->
           <div style="text-align:center;margin-top:40px;">
             <span class="step"></span>
             <span class="step"></span>
-            {{-- <span class="step"></span>
-            <span class="step"></span> --}}
           </div>
         </form>
     </div>
   </div>
-
-  
 
   <script>
     var currentTab = 0; // Current tab is set to be the first tab (0)
@@ -313,8 +307,10 @@
       } else {
         document.getElementById("prevBtn").style.display = "inline";
       }
+
       if (n == (x.length - 1)) {
         document.getElementById("nextBtn").innerHTML = "Submit";
+        document.getElementById("nextBtn").type = "submit";
       } else {
         document.getElementById("nextBtn").innerHTML = "Next";
       }
