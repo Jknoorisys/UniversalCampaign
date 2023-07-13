@@ -141,14 +141,6 @@
                             <input class="form-check-input" type="radio" name="google_objective" id="optionsRadios12" value="TRAVEL">
                             <label class="form-check-label" for="optionsRadios5">TRAVEL</label>
                           </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="google_objective" id="optionsRadios13" value="UNSPECIFIED">
-                            <label class="form-check-label" for="optionsRadios5">UNSPECIFIED</label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="google_objective" id="optionsRadios14" value="UNKNOWN">
-                            <label class="form-check-label" for="optionsRadios5">UNKNOWN</label>
-                          </div>
                         </div>
                         <div class="col-3">
                           <label class="mb-2">FB/Instagram</label>
@@ -173,9 +165,6 @@
                             <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios5" value="APP_PROMOTION">
                             <label class="form-check-label" for="optionsRadios8">APP PROMOTION</label>
                           </div>
-                          
-                          
-                          
                           <div class="form-check">
                             <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios8" value="SALES">
                             <label class="form-check-label" for="optionsRadios8">SALES</label>
