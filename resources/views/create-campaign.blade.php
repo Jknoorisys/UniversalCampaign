@@ -145,28 +145,28 @@
                         <div class="col-3">
                           <label class="mb-2">FB/Instagram</label>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios3" value="ENGAMENT" checked>
-                            <label class="form-check-label" for="optionsRadios6">ENGAMENT</label>
+                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios1" value="OUTCOME_APP_PROMOTION" checked>
+                            <label class="form-check-label" for="optionsRadios1">APP PROMOTION</label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios1" value="AWARENESS">
-                            <label class="form-check-label" for="optionsRadios6">AWARENESS</label>
+                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios2" value="OUTCOME_AWARENESS">
+                            <label class="form-check-label" for="optionsRadios2">OUTCOME_AWARENESS</label>
                           </div>
                           <div class="form-check">
-                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios2" value="TRAFFIC">
+                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios3" value="OUTCOME_ENGAGEMENT">
+                            <label class="form-check-label" for="optionsRadios3">ENGAGEMENT</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios4" value="OUTCOME_LEADS">
+                            <label class="form-check-label" for="optionsRadios4">LEADS</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios5" value="OUTCOME_SALES">
+                            <label class="form-check-label" for="optionsRadios5">SALES</label>
+                          </div>
+                          <div class="form-check">
+                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios6" value="OUTCOME_TRAFFIC">
                             <label class="form-check-label" for="optionsRadios6">TRAFFIC</label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios4" value="LEAD">
-                            <label class="form-check-label" for="optionsRadios8">LEAD</label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios5" value="APP_PROMOTION">
-                            <label class="form-check-label" for="optionsRadios8">APP PROMOTION</label>
-                          </div>
-                          <div class="form-check">
-                            <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios8" value="SALES">
-                            <label class="form-check-label" for="optionsRadios8">SALES</label>
                           </div>
                         </div>
                         <div class="col-3">
