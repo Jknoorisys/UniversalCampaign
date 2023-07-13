@@ -28,6 +28,7 @@ class CampaignController extends Controller
         ];
 
         $snapchatCampaign = $this->snapchatCampaign($snapchatData);
+        // return $request->fb_objective;
 
         $facebookData = [
             'objective' => $request->fb_objective,
@@ -120,13 +121,13 @@ class CampaignController extends Controller
         
         // return $facebookData;
         $apiUrl = 'https://graph.facebook.com/v17.0/act_1250917015624823/campaigns';
-        $accessToken = 'EAAL4ugcpMaABADRSDVrUxrmfsFZBqiPG3F40urU1Lv9rcJhfeqLZAYh5SNqGFtRpefpuZBmALDRDHyHuZAlR6SfJvpn7ew9d6a4d2XMJktRq6dhpjxtNayJTa4HCnWWYkXd2ZCXi3al3Si146UGXzUM9FWBhlxyQ5rytEhDirTQLIZCwTgQIvW9hTq2KCz6jT4wWKvClpeSeWDXm15kRb3OO6adAqqdIcZD';
+        $accessToken = 'EAAL4ugcpMaABAAQN9iYYiBzGpTK8QnO7PqzrZA0iSrqYNakCjWemZByooRlMUt0josezpIiZBnt7UJnzZCidAu6xOJqzttzwcZAHQlFpSIWzRuYRx8VaZAEtg2XmYBg9c96WlEuJTDvOBdAt6KoGlN9jZANStXzctLZBJ51gibAIh3rPj6vZBFp3UnZBU2mthLTMq4rrmayJ2glrBQT2Ef7AylBJkMSARN40QZD';
 
         $data = [
             'name' => $facebookData['name'],
             'objective' => $facebookData['objective'],
             'status' => 'PAUSED',
-            'special_ad_categories' => ['NONE'],
+            'special_ad_categories' => ['credit'],
         ];
 
         $client = new Client();
@@ -135,7 +136,7 @@ class CampaignController extends Controller
             'headers' => [
                 'Authorization' => 'Bearer ' . $accessToken,
             ],
-            // 'form_params' => $data,
+            'form_params' => $data,
         ]);
 
         $campaignData = json_decode($response->getBody(), true);
