@@ -64,22 +64,24 @@ class CampaignController extends Controller
         $name = $snapchatData['name'];
         $start_time = Carbon::parse($snapchatData['start_time']);
         $objective = $snapchatData['objective'];
-        $end_time = Carbon::parse($snapchatData['end_time']);
-        $daily_cpc  = $snapchatData['daily_cpc'] * 1000000;
-        $lifetime_cpc  = $snapchatData['lifetime_cpc'] * 1000000;
+        $end_time = $snapchatData['end_time'] ? Carbon::parse($snapchatData['end_time']) : null;
+        $daily_budget_micro  = $snapchatData['daily_cpc'] * 1000000;
+        $lifetime_spend_cap_micro  = $snapchatData['lifetime_cpc'] * 1000000;
 
         $data = [
             'campaigns' => [
-                [
-                    'name' => $name,
-                    'ad_account_id' => $ad_account_id,
-                    'status' => 'PAUSED',
-                    'start_time' => $start_time,
-                    'end_time'  => $end_time,
-                    'objective' => $objective,
-                    'daily_budget_micro' => $daily_cpc,
-                    'lifetime_spend_cap_micro' => $lifetime_cpc
-                ]
+                array_merge(
+                    [
+                        'name' => $name,
+                        'ad_account_id' => $ad_account_id,
+                        'status' => 'PAUSED',
+                        'start_time' => $start_time,
+                        'objective' => $objective,
+                        'daily_budget_micro' => $daily_budget_micro,
+                        'lifetime_spend_cap_micro' => $lifetime_spend_cap_micro,
+                    ],
+                    (($end_time !== null && $end_time !== '') ? ['end_time' => $end_time] : [])
+                )
             ]
         ];
         
