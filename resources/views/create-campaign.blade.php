@@ -45,7 +45,7 @@
       width: 15px;
       margin: 0 2px;
       background-color: #bbbbbb;
-      border: none;
+      border: none;  
       border-radius: 50%;
       display: inline-block;
       opacity: 0.5;
@@ -63,22 +63,21 @@
     }
   </style>
 </head>
-
 <body>
 
   <div class="container">
     <div class="row col-12 justify-content-center">
-        <form id="regForm" action="/action_page.php">
+        <form id="regForm" method="POST" action="{{ url('createCampaign') }}">
+          @csrf
+
           <h3 class="text mb-4" style="font-weight: bold">Create Campaign</h3>
           <!-- One "tab" for each step in the form: -->
           <div class="tab">
-            @csrf
-            {{-- <input type="hidden" name="ad_account_id" value="{{ $ad_account_id }}"> --}}
               <div class="form-group">
                   <div class="row">
                       <div class="col-6">
                           <div class="form-floating mb-3">
-                              <input type="text" class="form-control" id="name" name="name" placeholder="Camaoign Name" required>
+                              <input type="text" class="form-control" id="name" name="name" placeholder="Campaign Name" required>
                               <label for="name">Campaign Name</label>
                           </div>
                       </div>
@@ -320,19 +319,34 @@
                   </fieldset>
               </div>
           </div>
-          <div class="tab">Contact Info:
-            <p><input placeholder="E-mail..." oninput="this.className = ''" name="email"></p>
-            <p><input placeholder="Phone..." oninput="this.className = ''" name="phone"></p>
+          <div class="tab">
+            <div class="form-check">
+              <input class="form-check-input" type="checkbox" value="" id="myCheck" onclick="myFunction()">
+              <label class="form-check-label" for="myCheck">Set an End Date (Optional)</label>
+            </div>
+            <div class="row mt-2" id="text" style="display:none">
+              <div class="form-floating">
+                <input type="datetime-local" class="form-control" id="endTime" name="end_time" placeholder="Campaign End Time">
+                <label for="endTime">Campaign End Time</label>
+              </div>
+            </div>
+            <div class="row mt-2">
+              <label class="mb-2">Budget</label>
+              <div class="col-6">
+                  <div class="form-floating mb-3">
+                      <input type="number" step="0.1" class="form-control" id="daily_cpc" name="daily_cpc" placeholder="Daily Spend Cap" required>
+                      <label for="name">Daily Spend Cap</label>
+                  </div>
+              </div>
+              <div class="col-6">
+                <div class="form-floating mb-3">
+                    <input type="number" step="0.1" class="form-control" id="lifetime_cpc" name="lifetime_cpc" placeholder="Lifetime Spend Cap" required>
+                    <label for="name">Lifetime Spend Cap</label>
+                </div>
+              </div>
+            </div>
           </div>
-          <div class="tab">Birthday:
-            <p><input placeholder="dd" oninput="this.className = ''" name="dd"></p>
-            <p><input placeholder="mm" oninput="this.className = ''" name="nn"></p>
-            <p><input placeholder="yyyy" oninput="this.className = ''" name="yyyy"></p>
-          </div>
-          <div class="tab">Login Info:
-            <p><input placeholder="Username..." oninput="this.className = ''" name="uname"></p>
-            <p><input placeholder="Password..." oninput="this.className = ''" name="pword" type="password"></p>
-          </div>
+          
           <div style="overflow:auto;" class="mt-2">
             <div style="float:right;">
               <button type="button" class="btn btn-primary btn-sm" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
@@ -343,8 +357,8 @@
           <div style="text-align:center;margin-top:40px;">
             <span class="step"></span>
             <span class="step"></span>
-            <span class="step"></span>
-            <span class="step"></span>
+            {{-- <span class="step"></span>
+            <span class="step"></span> --}}
           </div>
         </form>
     </div>
@@ -439,5 +453,4 @@
     }
   </script>
 </body>
-
 </html>
