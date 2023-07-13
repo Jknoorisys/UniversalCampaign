@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\campaign;
-
+use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\Controller;
 use App\Models\SnapchatTokens;
 use Carbon\Carbon;
@@ -24,11 +24,24 @@ class CampaignController extends Controller
             'start_time' => $start_time,
             'end_time'   => $end_time,
             'daily_cpc'  => $daily_cpc,
-            'lifetime_cpc' => $lifetime_cpc
+            'lifetime_cpc' => $lifetime_cpc,
         ];
 
         $snapchatCampaign = $this->snapchatCampaign($snapchatData);
-        return $snapchatCampaign;
+
+        $facebookData = [
+            'objective' => $request->fb_objective,
+            'name' => $name,
+            'start_time' => $start_time,
+            'end_time'   => $end_time,
+            'daily_cpc'  => $daily_cpc,
+            'lifetime_cpc' => $lifetime_cpc,
+            'special_ad_categories' => 'NONE'
+
+        ];
+        $facebookCampaign = $this->facebookCampaign($facebookData);
+
+        return $facebookCampaign;
     }
 
     function snapchatCampaign($snapchatData) {
@@ -100,5 +113,33 @@ class CampaignController extends Controller
         $responseData = json_decode($responseBody, true);
         
         return $responseData;
+    }
+
+    function facebookCampaign($facebookData)
+    {
+        
+        // return $facebookData;
+        $apiUrl = 'https://graph.facebook.com/v17.0/act_1250917015624823/campaigns';
+        $accessToken = 'EAAL4ugcpMaABADRSDVrUxrmfsFZBqiPG3F40urU1Lv9rcJhfeqLZAYh5SNqGFtRpefpuZBmALDRDHyHuZAlR6SfJvpn7ew9d6a4d2XMJktRq6dhpjxtNayJTa4HCnWWYkXd2ZCXi3al3Si146UGXzUM9FWBhlxyQ5rytEhDirTQLIZCwTgQIvW9hTq2KCz6jT4wWKvClpeSeWDXm15kRb3OO6adAqqdIcZD';
+
+        $data = [
+            'name' => $facebookData['name'],
+            'objective' => $facebookData['objective'],
+            'status' => 'PAUSED',
+            'special_ad_categories' => ['NONE'],
+        ];
+
+        $client = new Client();
+
+        $response = $client->post($apiUrl, [
+            'headers' => [
+                'Authorization' => 'Bearer ' . $accessToken,
+            ],
+            // 'form_params' => $data,
+        ]);
+
+        $campaignData = json_decode($response->getBody(), true);
+
+        return response()->json($campaignData);
     }
 }

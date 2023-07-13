@@ -42,5 +42,10 @@ Route::prefix('snapchat')->group(function () {
 Route::prefix('facebook')->group(function () {
     Route::get('facebook-integration',[FacebookMarketingController::class,'integrateWithAPI']);
     Route::get('facebook-authentication',[FacebookMarketingController::class,'generateUserAccessToken']);
+    Route::get('facebook-create-campaign',[FacebookMarketingController::class,'createCampaign']);
+    Route::get('facebook-getAllAdAccount',[FacebookMarketingController::class,'getAllAdAccount']);
+    Route::get('facebook-get-all-campaigns/{id}',[FacebookMarketingController::class,'getAllCampaign']);
+    Route::get('create-campaign-form/{id}', [FacebookMarketingController::class, 'createCampaignForm']);
+
     
 });
