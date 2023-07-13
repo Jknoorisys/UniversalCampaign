@@ -27,19 +27,46 @@ class CampaignController extends Controller
             'lifetime_cpc' => $lifetime_cpc
         ];
 
-        $this->snapchatCampaign($snapchatData);
+        $snapchatCampaign = $this->snapchatCampaign($snapchatData);
+        return $snapchatCampaign;
     }
 
     function snapchatCampaign($snapchatData) {
         $snapchatTokens = SnapchatTokens::first();
         $accessToken = $snapchatTokens ? $snapchatTokens->access_token : '';
+        $refreshToken = $snapchatTokens ? $snapchatTokens->refresh_token : '';
         $ad_account_id = $snapchatTokens->adaccount_id ? $snapchatTokens->adaccount_id : '';
-        $name = $snapchatData->name;
-        $start_time = Carbon::parse($snapchatData->start_time);
-        $objective = $snapchatData->objective;
 
-       // Instantiate a Guzzle client
+        // Instantiate a Guzzle client
         $client = new Client();
+
+        // Prepare the request parameters
+        $params = [
+            'grant_type' => 'refresh_token',
+            'client_id' => '309ca9ba-76b3-4d3b-95d9-ad414cf5229f',
+            'client_secret' => '3cbcf3b6a96e29f7f858',
+            'refresh_token' => $refreshToken,
+        ];
+
+        // Send a POST request to the Snapchat OAuth 2.0 endpoint
+        $response = $client->post('https://accounts.snapchat.com/login/oauth2/access_token', [
+            'form_params' => $params
+        ]);
+
+        // Get the response body as JSON
+        $responseBody = (string) $response->getBody();
+        $responseData = json_decode($responseBody, true);    
+
+        $snapchatTokens->access_token = $responseData['access_token'];
+        $snapchatTokens->refresh_token = $responseData['refresh_token'];
+        $snapchatTokens->save();
+
+        $name = $snapchatData['name'];
+        $start_time = Carbon::parse($snapchatData['start_time']);
+        $objective = $snapchatData['objective'];
+        $end_time = Carbon::parse($snapchatData['end_time']);
+        $daily_cpc  = $snapchatData['daily_cpc'] * 1000000;
+        $lifetime_cpc  = $snapchatData['lifetime_cpc'] * 1000000;
 
         $data = [
             'campaigns' => [
@@ -48,7 +75,10 @@ class CampaignController extends Controller
                     'ad_account_id' => $ad_account_id,
                     'status' => 'PAUSED',
                     'start_time' => $start_time,
-                    'objective' => $objective
+                    'end_time'  => $end_time,
+                    'objective' => $objective,
+                    'daily_budget_micro' => $daily_cpc,
+                    'lifetime_spend_cap_micro' => $lifetime_cpc
                 ]
             ]
         ];
@@ -67,6 +97,6 @@ class CampaignController extends Controller
         $responseBody = (string) $response->getBody();
         $responseData = json_decode($responseBody, true);
         
-        return true;
+        return $responseData;
     }
 }
