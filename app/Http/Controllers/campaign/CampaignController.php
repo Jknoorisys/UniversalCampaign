@@ -119,7 +119,7 @@ class CampaignController extends Controller
     function facebookCampaign($facebookData)
     {
         
-        // return $facebookData;
+        $
         $apiUrl = 'https://graph.facebook.com/v17.0/act_1250917015624823/campaigns';
         $accessToken = 'EAAL4ugcpMaABAAQN9iYYiBzGpTK8QnO7PqzrZA0iSrqYNakCjWemZByooRlMUt0josezpIiZBnt7UJnzZCidAu6xOJqzttzwcZAHQlFpSIWzRuYRx8VaZAEtg2XmYBg9c96WlEuJTDvOBdAt6KoGlN9jZANStXzctLZBJ51gibAIh3rPj6vZBFp3UnZBU2mthLTMq4rrmayJ2glrBQT2Ef7AylBJkMSARN40QZD';
 
