@@ -150,7 +150,7 @@
                           </div>
                           <div class="form-check">
                             <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios2" value="OUTCOME_AWARENESS">
-                            <label class="form-check-label" for="optionsRadios2">OUTCOME_AWARENESS</label>
+                            <label class="form-check-label" for="optionsRadios2">OUTCOME AWARENESS</label>
                           </div>
                           <div class="form-check">
                             <input class="form-check-input" type="radio" name="fb_objective" id="optionsRadios3" value="OUTCOME_ENGAGEMENT">
