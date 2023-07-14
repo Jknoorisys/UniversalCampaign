@@ -143,4 +143,5 @@ class CampaignController extends Controller
 
         return response()->json($campaignData);
     }
+    
 }
