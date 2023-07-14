@@ -44,7 +44,7 @@
                                         <td>{{ $campaign['campaign']['objective'] }}</td>
                                         <td>{{ $campaign['campaign']['start_time'] }}</td>
                                         <td>{{ $campaign['campaign']['status'] }}</td>
-                                        <td><a href="{{ url('snapchat/get-all-campaigns/' . $campaign['campaign']['id']) }}"><i class="fa fa-ellipsis-h" style="font-size:24px"></i></a></td>
+                                        <td><a href="{{ url('snapchat/create-ad-group-form/' . $campaign['campaign']['id']) }}"><i class="fa fa-ellipsis-h" style="font-size:24px"></i></a></td>
                                     </tr>
                                 @endforeach 
                             @else
