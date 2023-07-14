@@ -48,6 +48,7 @@ Route::prefix('facebook')->group(function () {
     Route::get('facebook-get-all-campaigns/{id}',[FacebookMarketingController::class,'getAllCampaign']);
     Route::get('create-campaign-form/{id}', [FacebookMarketingController::class, 'createCampaignForm']);
     Route::get('generateToken', [FacebookMarketingController::class, 'token']);
+    Route::get('adset', [FacebookMarketingController::class, 'adset']);
 
     
 });

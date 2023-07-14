@@ -170,4 +170,8 @@ class FacebookMarketingController extends Controller
         
 
     }
+    function adset()
+    {
+        return view('ad_set');
+    }
 }
