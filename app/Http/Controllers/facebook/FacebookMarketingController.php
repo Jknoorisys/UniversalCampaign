@@ -134,4 +134,40 @@ class FacebookMarketingController extends Controller
 
         return response()->json($campaignData);
     }
+    public function token()
+    {
+    
+
+        $app_id = '836427821167008';
+        $app_secret = '76a16b4c22495ec7c88521f2ed554176';
+
+        $api_version = 'v17.0';
+
+        $endpoint = "https://graph.facebook.com/{$api_version}/oauth/access_token";
+
+        $params = [
+            'grant_type' => 'client_credentials',
+            'client_id' => $app_id,
+            'client_secret' => $app_secret
+        ];
+
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, $endpoint);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $params);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        $result = curl_exec($ch);
+        curl_close($ch);
+
+        $response = json_decode($result, true);
+
+        if (isset($response['access_token'])) {
+            $access_token = $response['access_token'];
+            echo "Access Token: {$access_token}";
+        } else {
+            echo "Error: Unable to generate access token.";
+        }
+        
+
+    }
 }
