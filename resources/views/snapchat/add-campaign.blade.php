@@ -29,7 +29,7 @@
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" id="name" name="name" placeholder="Camaoign Name" required>
+                                        <input type="text" class="form-control" id="name" name="name" placeholder="Campaign Name" required>
                                         <label for="name">Campaign Name</label>
                                     </div>
                                 </div>
@@ -49,7 +49,7 @@
                                             <label class="form-check-label" for="optionsRadios1">BRAND AWARENESS</label>
                                           </div>
                                           <div class="form-check">
-                                            <input class="form-check-input" type="radio" name="optionsRadios" id="optionsRadios2" value="APP_CONVERSION">
+                                            <input class="form-check-input" type="radio" name="objective" id="optionsRadios2" value="APP_CONVERSION">
                                             <label class="form-check-label" for="optionsRadios2">APP CONVERSION</label>
                                           </div>
                                           <div class="form-check">

@@ -37,6 +37,7 @@ Route::prefix('snapchat')->group(function () {
     Route::get('create-campaign-form/{id}', [SnapchatController::class, 'createCampaignForm']);
     Route::post('create-campaign', [SnapchatController::class, 'createCampaign']);
     Route::get('create-ad-group-form/{id}', [SnapchatController::class, 'createAdGroupForm']);
+    Route::post('create-ad-group', [SnapchatController::class, 'createAdGroup']);
 
 });
 

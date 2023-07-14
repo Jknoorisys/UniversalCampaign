@@ -185,8 +185,17 @@ class SnapchatController extends Controller
         return redirect('snapchat/get-all-campaigns/' . $ad_account_id);
     }
 
-    public function createAdGroupForm($camapign_id) {
-        return $camapign_id;
+    public function createAdGroupForm($campaign_id) {
+        $snapchatTokens = SnapchatTokens::first();
+        $accessToken = $snapchatTokens ? $snapchatTokens->access_token : '';
+        $ad_account_id = $snapchatTokens->adaccount_id;
+
+        $data = [
+            'campaign_id' => $campaign_id,
+            'ad_account_id' => $ad_account_id
+        ];
+
+        return view('snapchat.create-ad-group', $data);
     }
 
     // create Ad Group
@@ -195,38 +204,52 @@ class SnapchatController extends Controller
         $accessToken = $snapchatTokens ? $snapchatTokens->access_token : '';
         $ad_account_id = $request->ad_account_id;
         $name = $request->name;
-        $start_time = Carbon::parse($request->start_time);
         $objective = $request->objective;
-
-       // Instantiate a Guzzle client
-        $client = new Client();
+        $campaign_id = $request->campaign_id;
 
         $data = [
-            'campaigns' => [
+            'adsquads' => [
                 [
+                    'campaign_id' => $campaign_id,
                     'name' => $name,
-                    'ad_account_id' => $ad_account_id,
-                    'status' => 'PAUSED',
-                    'start_time' => $start_time,
-                    'objective' => $objective
-                ]
-            ]
+                    'type' => 'SNAP_ADS',
+                    'placement_v2' => [
+                        'config' => 'AUTOMATIC',
+                    ],
+                    'optimization_goal' => $objective,
+                    'bid_micro' => 1000000,
+                    'daily_budget_micro' => 1000000000,
+                    'bid_strategy' => 'LOWEST_COST_WITH_MAX_BID',
+                    'billing_event' => 'IMPRESSION',
+                    'targeting' => [
+                        'geos' => [
+                            [
+                                'country_code' => 'us',
+                            ],
+                        ],
+                    ],
+                    'start_time' => '2016-08-11T22:03:58.869Z',
+                ],
+            ],
         ];
-        
-        $url = 'https://adsapi.snapchat.com/v1/adaccounts/'.$ad_account_id.'/campaigns';
-        
-        $response = $client->post($url, [
+
+        $url = 'https://adsapi.snapchat.com/v1/campaigns/'.$campaign_id.'/adsquads';
+
+       // Instantiate a Guzzle client
+       $client = new Client();
+       
+       $response = $client->post($url, [
             'headers' => [
                 'Authorization' => 'Bearer ' . $accessToken,
                 'Content-Type' => 'application/json'
             ],
-            'json' => $data
-        ]);
+           'json' => $data
+       ]);       
 
         // Get the response body as JSON
         $responseBody = (string) $response->getBody();
         $responseData = json_decode($responseBody, true);    
 
-        return redirect('snapchat/get-all-campaigns/' . $ad_account_id);
+        return $responseData;
     }
 }
