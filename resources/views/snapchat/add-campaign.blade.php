@@ -92,7 +92,7 @@
                         </div>
                         <div class="form-group mt-2">
                             <button type="submit" class="btn btn-primary">Save changes</button>
-                            <a href="{{ url('snapchat/get-all-campaigns/' . $ad_account_id) }}" class="btn btn-secondary">Close</a>
+                            <a href="{{ url('snapchat/get-all-campaigns') }}" class="btn btn-secondary">Close</a>
                         </div>
                     </form>
                 </div>

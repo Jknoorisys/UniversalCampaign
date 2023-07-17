@@ -64,7 +64,7 @@ class SnapchatController extends Controller
         $snapchatTokens->refresh_token = $responseData['refresh_token'];
         $snapchatTokens->save();
 
-        return redirect()->to('snapchat/get-all-adAccounts');
+        return redirect()->to('snapchat/get-all-campaigns');
     }
 
     // Get All Organizations
@@ -115,9 +115,10 @@ class SnapchatController extends Controller
     }
 
     // Get All Campaigns
-    public function getAllCampaigns($ad_account_id) {
+    public function getAllCampaigns() {
         $snapchatTokens = SnapchatTokens::first();
         $accessToken = $snapchatTokens ? $snapchatTokens->access_token : '';
+        $ad_account_id = $snapchatTokens->adaccount_id;
 
        // Instantiate a Guzzle client
         $client = new Client();
@@ -182,7 +183,7 @@ class SnapchatController extends Controller
         $responseBody = (string) $response->getBody();
         $responseData = json_decode($responseBody, true);    
 
-        return redirect('snapchat/get-all-campaigns/' . $ad_account_id);
+        return redirect('snapchat/get-all-campaigns');
     }
 
     public function createAdGroupForm($campaign_id) {
@@ -200,6 +201,7 @@ class SnapchatController extends Controller
 
     // create Ad Group
      public function createAdGroup(Request $request) {
+        return $request->all();
         $snapchatTokens = SnapchatTokens::first();
         $accessToken = $snapchatTokens ? $snapchatTokens->access_token : '';
         $ad_account_id = $request->ad_account_id;
