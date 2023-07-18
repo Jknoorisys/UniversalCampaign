@@ -38,6 +38,8 @@ Route::prefix('snapchat')->group(function () {
     Route::post('create-campaign', [SnapchatController::class, 'createCampaign']);
     Route::get('create-ad-group-form/{id}', [SnapchatController::class, 'createAdGroupForm']);
     Route::post('create-ad-group', [SnapchatController::class, 'createAdGroup']);
+    Route::get('create-media', [SnapchatController::class, 'createMedia']);
+    Route::get('upload-media', [SnapchatController::class, 'uploadMedia']);
 
 });
 

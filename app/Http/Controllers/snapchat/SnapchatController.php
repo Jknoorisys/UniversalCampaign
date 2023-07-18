@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\SnapchatTokens;
 use Carbon\Carbon;
 use GuzzleHttp\Client;
+use GuzzleHttp\RequestOptions;
 use Illuminate\Http\Request;
 
 class SnapchatController extends Controller
@@ -201,27 +202,29 @@ class SnapchatController extends Controller
 
     // create Ad Group
      public function createAdGroup(Request $request) {
-        return $request->all();
         $snapchatTokens = SnapchatTokens::first();
         $accessToken = $snapchatTokens ? $snapchatTokens->access_token : '';
-        $ad_account_id = $request->ad_account_id;
+        $type = $request->type;
         $name = $request->name;
         $objective = $request->objective;
+        $config = $request->config;
         $campaign_id = $request->campaign_id;
+        $placement = $request->placement;
+        $bid_strategy = $request->bid_strategy;
+        $max_bid = $request->max_bid;
 
         $data = [
             'adsquads' => [
                 [
                     'campaign_id' => $campaign_id,
                     'name' => $name,
-                    'type' => 'SNAP_ADS',
+                    'type' => $type,
                     'placement_v2' => [
-                        'config' => 'AUTOMATIC',
+                        'config' => $config,
                     ],
                     'optimization_goal' => $objective,
-                    'bid_micro' => 1000000,
                     'daily_budget_micro' => 1000000000,
-                    'bid_strategy' => 'LOWEST_COST_WITH_MAX_BID',
+                    'bid_strategy' => $bid_strategy,
                     'billing_event' => 'IMPRESSION',
                     'targeting' => [
                         'geos' => [
@@ -235,6 +238,15 @@ class SnapchatController extends Controller
             ],
         ];
 
+        if ($data['adsquads'][0]['placement_v2']['config'] === 'CUSTOM') {
+            $data['adsquads'][0]['placement_v2']['platforms'] = ['SNAPCHAT'];
+            $data['adsquads'][0]['placement_v2']['snapchat_positions'] = [$placement];
+        }
+
+        if ($data['adsquads'][0]['bid_strategy'] === 'LOWEST_COST_WITH_MAX_BID') {
+            $data['adsquads'][0]['bid_micro'] = $max_bid * 1000000;
+        }
+       
         $url = 'https://adsapi.snapchat.com/v1/campaigns/'.$campaign_id.'/adsquads';
 
        // Instantiate a Guzzle client
@@ -252,6 +264,80 @@ class SnapchatController extends Controller
         $responseBody = (string) $response->getBody();
         $responseData = json_decode($responseBody, true);    
 
-        return $responseData;
+        return redirect()->to('snapchat/get-all-campaigns');
+    }
+
+     // create media
+     public function createMedia() {
+        $snapchatTokens = SnapchatTokens::first();
+        $accessToken = $snapchatTokens ? $snapchatTokens->access_token : '';
+        $ad_account_id = $snapchatTokens->adaccount_id;
+
+        // Create a new Guzzle HTTP client instance
+        $client = new Client();
+
+        // Prepare the request data
+        $data = [
+            'media' => [
+                [
+                    'name' => 'Media A - Video',
+                    'type' => 'IMAGE',
+                    'ad_account_id' => $ad_account_id,
+                ]
+            ]
+        ];
+
+        // Prepare the headers
+        $headers = [
+            'Content-Type' => 'application/json',
+            'Authorization' => 'Bearer '.$accessToken,
+        ];
+
+        // Make the POST request
+        $response = $client->post('https://adsapi.snapchat.com/v1/adaccounts/'.$ad_account_id.'/media', [
+            'json' => $data,
+            'headers' => $headers,
+        ]);
+
+        // Get the response body
+        $body = $response->getBody()->getContents();
+
+        // Print the response body
+        echo $body;
+    }
+
+    // upload media
+    public function uploadMedia() {
+        $snapchatTokens = SnapchatTokens::first();
+        $accessToken = $snapchatTokens ? $snapchatTokens->access_token : '';
+        $ad_account_id = $snapchatTokens->adaccount_id;
+        $filePath = "C:\Users\Noorisys-55\Pictures\Saved Pictures\download.jpg";
+        
+        // Create a new Guzzle HTTP client instance
+        $client = new Client();
+
+        // Prepare the headers
+        $headers = [
+            'Content-Type' => 'multipart/form-data',
+            'Authorization' => 'Bearer '.$accessToken,
+        ];
+
+        // Make the POST request
+        $response = $client->post('https://adsapi.snapchat.com/v1/media/dd997fa2-16f1-47d2-a6aa-af3e75c8b5ad/upload', [
+            'headers' => $headers,
+            RequestOptions::MULTIPART => [
+                [
+                    'name' => 'file',
+                    'contents' => fopen($filePath, 'r'),
+                    'filename' => 'download.jpg',
+                ],
+            ],
+        ]);
+
+        // Get the response body
+        $body = $response->getBody()->getContents();
+
+        // Print the response body
+        echo $body;
     }
 }

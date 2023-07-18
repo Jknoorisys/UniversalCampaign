@@ -46,9 +46,6 @@
                     <div class="card-body">
                         <form action="{{ url('snapchat/create-ad-group') }}" method="POST">
                             @csrf
-                            <input type="hidden" id="selected-values" name="country_codes" value="">
-
-
                             <input type="hidden" name="campaign_id" value="{{ $campaign_id }}">
                             <div class="form-group">
                                 <div class="row">
@@ -185,7 +182,7 @@
                                         </div>
                                     </div>
                                 </fieldset>
-                                <div class="row">
+                                {{-- <div class="row">
                                     <label class="mt-4"><h6>Targeting</h6></label>
                                     <div class="col-4">
                                         <label>
@@ -195,6 +192,54 @@
                                         <select id="demo-multiple-select" multiple>
                                         </select>  
                                     </div>                                 
+                                </div> --}}
+                                <div class="row">
+                                    <div class="col-6">
+                                        <label for=""><h6 class="mt-4">Bid</h6></label>
+                                        <div class="form-check">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="bid_strategy" id="auto_bid" onclick="myFunction1()" value="AUTO_BID" checked>
+                                                <label class="form-check-label" for="auto_bid">Auto Bid (Recommended)</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="bid_strategy" id="max_bid_checked" onclick="myFunction1()" value="LOWEST_COST_WITH_MAX_BID">
+                                                <label class="form-check-label" for="max_bid_checked">Max Bid</label>
+                                            </div>
+                                            <div class="form-floating mb-3" id="max_bid" style="visibility: hidden;">
+                                                <input type="number" step="0.1" class="form-control" id="max_bid" name="max_bid" placeholder="Max Bid (per 1000 Impressions)">
+                                                <label for="max_bid">Max Bid (per 1000 Impressions)</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {{-- <div class="col-6 mt-4" id="placement" style="visibility:hidden">
+                                        <label for=""><h6 class="mt-4">Placement Types</h6></label>
+                                        <div class="form-check">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="placement" id="placement1" value="INTERSTITIAL_USER" checked>
+                                                <label class="form-check-label" for="placement1">INTERSTITIAL USER</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" id="placement2" name="placement" value="INTERSTITIAL_CONTENT">
+                                                <label class="form-check-label" for="placement2">INTERSTITIAL CONTENT</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="placement" id="placement3" value="INTERSTITIAL_SPOTLIGHT">
+                                                <label class="form-check-label" for="placement3">INTERSTITIAL SPOTLIGHT</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" id="placement4" name="placement" value="INSTREAM">
+                                                <label class="form-check-label" for="placement4">INSTREAM</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="placement" id="placement5" value="FEED">
+                                                <label class="form-check-label" for="placement5">FEED</label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" id="placement6" name="placement" value="CAMERA">
+                                                <label class="form-check-label" for="placement6">CAMERA</label>
+                                            </div>
+                                        </div>
+                                    </div> --}}
                                 </div>
                             </div>
                             <div class="form-group mt-2">
@@ -215,6 +260,13 @@
             document.getElementById('placement').style.visibility = 'visible';
         }else 
             document.getElementById('placement').style.visibility = 'hidden';
+    }
+
+    function myFunction1() {
+        if (document.getElementById('max_bid_checked').checked) {
+            document.getElementById('max_bid').style.visibility = 'visible';
+        }else 
+            document.getElementById('max_bid').style.visibility = 'hidden';
     }
 
     mobiscroll.setOptions({
