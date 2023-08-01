@@ -40,6 +40,8 @@ Route::prefix('snapchat')->group(function () {
     Route::post('create-ad-group', [SnapchatController::class, 'createAdGroup']);
     Route::get('create-media', [SnapchatController::class, 'createMedia']);
     Route::get('upload-media', [SnapchatController::class, 'uploadMedia']);
+    Route::get('get-all-ad-sets/{id}', [SnapchatController::class, 'getAllAdSet']);
+    Route::get('get-all-ads/{id}', [SnapchatController::class, 'getAllAds']);
 
 });
 
@@ -51,7 +53,5 @@ Route::prefix('facebook')->group(function () {
     Route::get('facebook-get-all-campaigns/{id}',[FacebookMarketingController::class,'getAllCampaign']);
     Route::get('create-campaign-form/{id}', [FacebookMarketingController::class, 'createCampaignForm']);
     Route::get('generateToken', [FacebookMarketingController::class, 'token']);
-    Route::get('adset', [FacebookMarketingController::class, 'adset']);
-
-    
+    Route::get('adset', [FacebookMarketingController::class, 'adset']);    
 });

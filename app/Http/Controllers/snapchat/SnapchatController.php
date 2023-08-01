@@ -340,4 +340,52 @@ class SnapchatController extends Controller
         // Print the response body
         echo $body;
     }
+
+    function getAllAdSet($campaign_id) {
+        $snapchatTokens = SnapchatTokens::first();
+        $accessToken = $snapchatTokens ? $snapchatTokens->access_token : '';
+
+       // Instantiate a Guzzle client
+        $client = new Client();
+
+        // Send a POST request to the Snapchat OAuth 2.0 endpoint
+        $response = $client->get('https://adsapi.snapchat.com/v1/campaigns/'.$campaign_id.'/adsquads', [
+            'headers' => [
+                'Authorization' => 'Bearer ' . $accessToken
+            ]
+        ]);
+
+        // Get the response body as JSON
+        $responseBody = (string) $response->getBody();
+        $responseData = json_decode($responseBody, true);    
+
+        $data['campaign_id'] = $campaign_id;
+        $data['adsquads'] = $responseData['adsquads'];
+        return view('snapchat.ad_sets', $data);
+    }
+
+    function getAllAds($ad_group_id) {
+        $snapchatTokens = SnapchatTokens::first();
+        $accessToken = $snapchatTokens ? $snapchatTokens->access_token : '';
+        $organization_id = $snapchatTokens ? $snapchatTokens->organization_id : '';
+
+       // Instantiate a Guzzle client
+        $client = new Client();
+
+        // Send a POST request to the Snapchat OAuth 2.0 endpoint
+        $response = $client->get('https://adsapi.snapchat.com/v1/adsquads/'.$ad_group_id.'/ads', [
+            'headers' => [
+                'Authorization' => 'Bearer ' . $accessToken
+            ]
+        ]);
+
+        // Get the response body as JSON
+        $responseBody = (string) $response->getBody();
+        $responseData = json_decode($responseBody, true);    
+
+        return $responseData;
+        $data['ads'] = $responseData['ads'];
+        return $data;
+        return view('snapchat.ads', $data);
+    }
 }

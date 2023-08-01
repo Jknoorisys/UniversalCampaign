@@ -20,39 +20,38 @@
     <div class="container">
         <div class="row col-12 justify-content-center mt-5">
             <div class="card">
-                <div class="card-header text-info"><h3>Campaigns</h3></div>
+                <div class="card-header text-info"><h3>Ad Squads</h3></div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-11"></div>
                         <div class="col-1 mb-1">
-                            <a href="{{ url('snapchat/create-campaign-form/' . $ad_account_id) }}"><i class="fa fa-plus" style="font-size:24px"></i></a>
+                            <a href="{{ url('snapchat/create-ad-group-form/' . $campaign_id) }}"><i class="fa fa-plus" style="font-size:24px"></i></a>
                         </div>
                     </div>
                     <table class="table table-bordered">
                         <thead class="text-center">
                             <th>Name</th>
-                            <th>Objective</th>
-                            <th>Start Time</th>
+                            <th>Type</th>
+                            <th>Billing Event</th>
+                            <th>Bid Strategy</th>
                             <th>Status</th>
                             <th>Action</th>
                         </thead>
                         <tbody>
-                            @if (!empty($campaigns))
-                                @foreach ($campaigns as $campaign )
+                            @if (!empty($adsquads))
+                                @foreach ($adsquads as $adsquad )
                                     <tr class="text-center">
-                                        <td>{{ $campaign['campaign']['name'] }}</td>
-                                        <td>{{ $campaign['campaign']['objective'] }}</td>
-                                        <td>{{ $campaign['campaign']['start_time'] }}</td>
-                                        <td>{{ $campaign['campaign']['status'] }}</td>
-                                        <td>
-                                            <a href="{{ url('snapchat/get-all-ad-sets/' . $campaign['campaign']['id']) }}"><i class="fa fa-eye" style="font-size:24px"></i></a>
-                                            <a href="{{ url('snapchat/create-ad-group-form/' . $campaign['campaign']['id']) }}"><i class="fa fa-ellipsis-h" style="font-size:24px"></i></a>
-                                        </td>
+                                        <td>{{ $adsquad['adsquad']['name'] }}</td>
+                                        <td>{{ $adsquad['adsquad']['type'] }}</td>
+                                        <td>{{ $adsquad['adsquad']['billing_event'] }}</td>
+                                        <td>{{ $adsquad['adsquad']['bid_strategy'] }}</td>
+                                        <td>{{ $adsquad['adsquad']['status'] }}</td>
+                                        <td><a href="{{ url('snapchat/get-all-ads/' . $adsquad['adsquad']['id']) }}"><i class="fa fa-ellipsis-h" style="font-size:24px"></i></a></td>
                                     </tr>
                                 @endforeach 
                             @else
                                 <tr class="text-center">
-                                    <td colspan="5"><h6 class="text-danger">No Campaign Found!</h6></td>
+                                    <td colspan="6"><h6 class="text-danger">No Ad Squad Found!</h6></td>
                                 </tr>
                             @endif
                         </tbody>
